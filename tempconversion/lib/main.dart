@@ -35,11 +35,12 @@ class _TempConversionState extends State<TempConversion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 4, 15, 24),
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.white10,
         titleTextStyle:
-            const TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+            const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -79,7 +80,7 @@ class _TempConversionState extends State<TempConversion> {
                     },
                   ),
                   const Text(
-                    'Fahrenheit to Celsius',
+                    'F to C',
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(width: 20),
@@ -93,7 +94,7 @@ class _TempConversionState extends State<TempConversion> {
                     },
                   ),
                   const Text(
-                    'Celsius to Fahrenheit',
+                    'C to F',
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
@@ -114,7 +115,7 @@ class _TempConversionState extends State<TempConversion> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _clearHistory, // Clear history button
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[600]),
                 child: const Text('Clear History'),
               ),
               const SizedBox(height: 20),
