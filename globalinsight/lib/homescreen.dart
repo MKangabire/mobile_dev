@@ -62,7 +62,8 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NewsScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const NewsScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

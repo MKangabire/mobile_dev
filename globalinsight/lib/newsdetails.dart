@@ -9,13 +9,13 @@ class NewsDetailsScreen extends StatelessWidget {
   final String url;
 
   const NewsDetailsScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.content,
     required this.imageUrl,
     required this.url,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'homescreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false, // Removes the debug banner
-      home: HomeScreen(), // Initial screen of the app
+      home: const HomeScreen(), // Initial screen of the app
     );
   }
 }
