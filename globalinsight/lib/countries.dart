@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'models/country_service.dart';
 
 class CountryScreen extends StatefulWidget {
+  const CountryScreen({super.key});
+
   @override
   _CountryScreenState createState() => _CountryScreenState();
 }
