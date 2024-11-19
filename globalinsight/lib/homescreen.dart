@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'countries.dart';
 import 'news.dart';
-// import 'weather.dart'; // Uncomment this if you have the WeatherScreen file
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,32 +35,6 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Uncomment and modify if you have the WeatherScreen
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const WeatherScreen(city: ''),
-                    //   ),
-                    // );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(
-                        Icons.cloud,
-                        color: Colors.black,
-                      ),
-                      SizedBox(width: 5), // Spacing between icon and text
-                      Text('Weather'),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8), // Spacing between buttons
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(

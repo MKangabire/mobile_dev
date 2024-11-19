@@ -26,6 +26,7 @@ class _CountryScreenState extends State<CountryScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          iconColor: const Color.fromARGB(255, 233, 175, 89),
           title: Text(country['name']['common']),
           content: SingleChildScrollView(
             child: Column(
@@ -72,7 +73,11 @@ class _CountryScreenState extends State<CountryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Countries')),
+      backgroundColor: const Color.fromARGB(255, 179, 138, 76),
+      appBar: AppBar(
+        title: const Text('Countries'),
+        backgroundColor: const Color.fromARGB(255, 219, 171, 99),
+      ),
       body: countries == null
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
@@ -80,6 +85,7 @@ class _CountryScreenState extends State<CountryScreen> {
               itemBuilder: (context, index) {
                 final country = countries![index];
                 return Card(
+                  color: const Color.fromARGB(255, 233, 175, 89),
                   margin:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: ListTile(

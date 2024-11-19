@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/news_service.dart';
 import 'package:intl/intl.dart';
+import 'newsdetails.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -54,8 +55,21 @@ class _NewsScreenState extends State<NewsScreen> {
                   final url = article['url'] ?? '';
 
                   return GestureDetector(
-                    onTap: () => showNewsDetails(
-                        context, title, description, content, url),
+                    onTap: () {
+                      // Navigate to the NewsDetailsScreen on tap
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewsDetailsScreen(
+                            title: title,
+                            description: description,
+                            content: content,
+                            imageUrl: imageUrl,
+                            url: url,
+                          ),
+                        ),
+                      );
+                    },
                     child: Card(
                       color: const Color.fromARGB(255, 233, 175, 89),
                       elevation: 6,
@@ -111,24 +125,6 @@ class _NewsScreenState extends State<NewsScreen> {
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(fontSize: 16),
                             ),
-                            const SizedBox(height: 10),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blueAccent,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  if (url.isNotEmpty) {
-                                    openArticleUrl(context, url, String);
-                                  }
-                                },
-                                child: const Text('Read More'),
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -138,79 +134,5 @@ class _NewsScreenState extends State<NewsScreen> {
               ),
             ),
     );
-  }
-
-  void showNewsDetails(
-    BuildContext context,
-    String title,
-    String description,
-    String content,
-    String url,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Description: $description',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                Text(content),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Close'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                openArticleUrl(
-                  context,
-                  url,
-                  String,
-                );
-              },
-              child: const Text('Read Full Article'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void openArticleUrl(BuildContext context, String url, Type string) async {
-    final Uri articleUrl = Uri.parse(url);
-
-    // Check if the URL can be launched
-    if (await canLaunchUrl(articleUrl)) {
-      await launchUrl(
-        articleUrl,
-        mode: LaunchMode.externalApplication,
-      );
-    } else {
-      // Show an error dialog if the URL can't be launched
-      showDialog(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Error'),
-          content: const Text('Could not open the article.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-    }
   }
 }
